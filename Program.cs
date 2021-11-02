@@ -14,7 +14,24 @@ namespace Bookish
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            
+                
+                host.Run();
+        }
+
+        public static void GenerateDummyData()
+        {
+            var authors = new Authors().GetAll();
+            if (!authors.Any())
+            {
+                new Authors().GenerateDummyData();
+                new Genres().GenerateDummyData();
+                new Members().GenerateDummyData();
+                new Books().GenerateDummyData();
+                new Copies().GenerateDummyData();
+                new Borrowed().GenerateDummyData();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
