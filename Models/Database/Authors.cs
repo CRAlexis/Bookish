@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Bookish.Models.Repository;
 using Dapper;
 using Npgsql;
 
@@ -31,6 +32,21 @@ namespace Bookish.Models.Database
             _Connection.Close();
             return author;
         }
-    }
 
+        public void GenerateDummyData()
+        {
+            Random rnd = new Random();
+            _Connection.Open();
+
+            for (int i = 0; i < 30; i++)
+            {
+                var cmd = _Connection.CreateCommand();
+                
+                cmd.CommandText = $"INSERT INTO authors (author) VALUES (@name)";
+                cmd.Parameters.AddWithValue("name", RandomData.names[rnd.Next(0,98)]);
+                cmd.ExecuteNonQuery();
+            }
+                _Connection.Close();
+        }
+    }
 }
