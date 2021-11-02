@@ -46,7 +46,8 @@ namespace Bookish.Models.Repository
             "Bears and wolves",
             "My favourite shoe",
             "Temuujin sleeps",
-            "Temuujin's adventure on the roof"
+            "Temuujin's adventure on the roof",
+            "Last book before Earth destruction"
         };
         public static List<string> genres = new List<string>()
         {

@@ -47,7 +47,7 @@ namespace Bookish.Models.Database
                 
                 cmd.CommandText = $"INSERT INTO books (title, author_id, genre_id, year_published, image)" +
                                   $"VALUES (@title, @author_id, @genre_id, @year, @image)";
-                cmd.Parameters.AddWithValue("title", RandomData.titles[rnd.Next(0,15)]);
+                cmd.Parameters.AddWithValue("title", RandomData.titles[i]);
                 cmd.Parameters.AddWithValue("author_id", rnd.Next(1, 30));
                 cmd.Parameters.AddWithValue("genre_id", rnd.Next(1, 30));
                 cmd.Parameters.AddWithValue("year", rnd.Next(1500, 2020));
