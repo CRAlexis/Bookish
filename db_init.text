@@ -1,48 +1,48 @@
 ﻿CREATE TABLE IF NOT EXISTS authors (
 	id SERIAL PRIMARY KEY,
-	author varchar
+	author varchar NOT NULL
 );
 CREATE TABLE IF NOT EXISTS genres (
 	id SERIAL PRIMARY KEY,
-	genre varchar
+	genre varchar NOT NULL
 );
 CREATE TABLE IF NOT EXISTS members (
 	id SERIAL PRIMARY KEY,
-	name varchar,
-	email varchar UNIQUE
+	name varchar NOT NULL,
+	email varchar UNIQUE NOT NULL
 );
 CREATE TABLE IF NOT EXISTS books (
 	id SERIAL PRIMARY KEY,
-	title varchar,
-	author_id int,
-	genre_id int,
+	title varchar NOT NULL,
+	author_id int NOT NULL,
+	genre_id int NOT NULL,
 	CONSTRAINT fk_author
 		FOREIGN KEY(author_id)
 			REFERENCES authors(id),
 	CONSTRAINT fk_genre
 		FOREIGN KEY(genre_id)
 			REFERENCES genres(id),
-	year_published int,
-	image varchar
+	year_published int NOT NULL,
+	image varchar NOT NULL
 );
 CREATE TABLE IF NOT EXISTS copies (
 	id SERIAL PRIMARY KEY,
-	book_id int,
+	book_id int NOT NULL,
 	CONSTRAINT fk_books
 		FOREIGN KEY(book_id)
 			REFERENCES books(id)
 );
 CREATE TABLE IF NOT EXISTS borrowed (
 	id SERIAL PRIMARY KEY,
-	copy_id int,
-	members_id int,
+	copy_id int NOT NULL,
+	members_id int NOT NULL,
 	CONSTRAINT fk_copies
 		FOREIGN KEY(copy_id)
 			REFERENCES copies(id),
 	CONSTRAINT fk_members
 		FOREIGN KEY(members_id)
 			REFERENCES members(id),
-	checked_out DATE,
+	checked_out DATE NOT NULL,
 	returned Date,
-	due_date Date
+	due_date Date NOT NULL
 );
