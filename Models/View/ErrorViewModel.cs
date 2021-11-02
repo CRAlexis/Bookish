@@ -1,4 +1,4 @@
-namespace MyFace.Models.View
+namespace Bookish.Models.View
 {
     public class ErrorViewModel
     {
