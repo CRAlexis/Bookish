@@ -4,11 +4,11 @@ using Npgsql;
 
 namespace Bookish.Models.Database
 {
-    public class Members
+    public class Member
     {
         private readonly NpgsqlConnection _Connection;
 
-        public Members()
+        public Member()
         {
             _Connection = Database.Connect();
         }
