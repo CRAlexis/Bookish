@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bookish.Models.Database;
+using Bookish.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace Bookish
         {
             // services.AddControllers();
             services.AddControllersWithViews();
+            services.AddTransient<IBooksService, BooksService>();
             // services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Bookish", Version = "v1"}); });
         }
 
