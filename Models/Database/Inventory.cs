@@ -22,6 +22,7 @@ namespace Bookish.Models.Database
         public bool members_id { get; set; }
         public string author { get; set; }
         public string genre { get; set; }
+        public string image { get; set; }
 
         public IEnumerable<Inventory> GetAll()
         {
@@ -29,6 +30,7 @@ namespace Bookish.Models.Database
                 $"SELECT " +
                 $"genres.genre, " +
                 $"books.title, " +
+                $"books.image, " +
                 $"books.year_published, " +
                 $"authors.author, " +
                 $"copies.id AS copy_id, " +
@@ -42,8 +44,23 @@ namespace Bookish.Models.Database
                 $"ORDER BY copy_id, checked_out DESC) " +
                 $"recently_borrowed on recently_borrowed.copy_id = copies.id " +
                 $"Order by books.title;");
-            _Connection.Close();
             return inventory;
+        }
+
+        public string ToJSON()
+        {
+            //json.net
+            return Newtonsoft.Json.JsonConvert.SerializeObject(new
+            {
+                copy_id,
+                title,
+                year_published,
+                currently_out,
+                members_id,
+                author,
+                genre,
+                image
+            });
         }
     }
 }

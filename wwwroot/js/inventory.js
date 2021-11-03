@@ -1,5 +1,4 @@
 ﻿var sortByTitle = false;
-
 function sortTableByTitle() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("inventoryTable");
@@ -186,7 +185,8 @@ function sortTableByYear() {
     sortByYear = !sortByYear
 }
 
-function sortTableBySearch(searchTerm) {
+function sortTableBySearch() {
+    const searchTerm = document.getElementById("searchBookInput").value;
     var table, rows, switching, i, x, y;
     table = document.getElementById("inventoryTable");
     rows = table.rows;
@@ -197,3 +197,4 @@ function sortTableBySearch(searchTerm) {
             : rows[i].style.visibility = 'collapse'
     }
 }
+sortTableBySearch()

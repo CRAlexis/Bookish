@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Bookish.Models.Repository;
+using Dapper;
 using Npgsql;
 
 namespace Bookish.Models.Database
@@ -16,7 +19,14 @@ namespace Bookish.Models.Database
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
-        
+
+        public List<Member> GetAll()
+        {
+            var members = _Connection.Query<Member>(
+                $"SELECT * FROM members;");
+            return members.ToList();
+        }
+
         public void GenerateDummyData()
         {
             Random rnd = new Random();
