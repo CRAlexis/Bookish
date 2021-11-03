@@ -1,5 +1,6 @@
 ﻿using System;
 using Bookish.Models.Database;
+using Bookish.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookish.Controllers
@@ -8,14 +9,22 @@ namespace Bookish.Controllers
     [Route("[controller]")]
     public class BookController : Controller
     {
+        
+        private readonly IBooksService _booksService;
+
+        public BookController(IBooksService booksService)
+        {
+            _booksService = booksService;
+        }
+
         // GET
         public string Index()
         {
-            var authors = new Authors().GetAll();
+            var books = _booksService.GetAll();
 
-            foreach (var author in authors)
+            foreach (var book in books)
             {
-                Console.WriteLine(author.author);
+                Console.WriteLine(book.title);
             }
             return "View";
         }
