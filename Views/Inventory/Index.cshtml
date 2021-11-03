@@ -5,20 +5,20 @@
 
 <div class="inventoryContainer">
     <div class="card searchBarContainer">
-        <input type="text" id="searchBookInput" name="searchBookInput" placeholder="Search for a book">
-        <button class="searchButton buttonBase">Search</button>
+        <input type="text" id="searchBookInput" name="searchBookInput" placeholder="Search for a book" oninput="sortTableBySearch(this.value)">
     </div>
 
     <div class="spacer"></div>
     <div class="card tableContainer">
         <div class="table-wrapper">
-            <table class="fl-table">
+            <table class="fl-table" id="inventoryTable">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                    <th>Year</th>
+                    <th onclick="sortTableByTitle()">Title</th>
+                    <th onclick="sortTableByAuthor()">Author</th>
+                    <th onclick="sortTableByGenre()">Genre</th>
+                    <th onclick="sortTableByYear()">Year</th>
+                    <th >Currently out</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,6 +29,7 @@
                         <td>@inventory.author</td>
                         <td>@inventory.genre</td>
                         <td>@inventory.year_published</td>
+                        <td>@( inventory.currently_out ? "X" : "")</td>
                     </tr>
                 }
                 </tbody>

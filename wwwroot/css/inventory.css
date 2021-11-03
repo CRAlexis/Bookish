@@ -23,35 +23,18 @@
 .inventoryContainer .searchBarContainer {
     width: 90%;
     padding: 10px;
-}
-
-/* Search bar button */
-.searchBarContainer .buttonBase {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
 }
 
-.searchBarContainer .searchButton {
-    background-color: #ae94ff;
-    color: black;
-    width: 30%;
-    height: 40px;
-
-} /*
 
 /* Text inputs for search bar */
 .searchBarContainer input[type=text] {
     height: 40px;
-    width: 60%;
-    margin-right: 15px;
+    width: 100%;
+    margin: auto;
     box-sizing: border-box;
+    font-size: 16px;
+    padding: 0 10px;
 }
 
 
@@ -84,6 +67,7 @@
 .fl-table th {
     position: sticky;
     top: 0;
+    cursor: pointer;
 }
 
 .fl-table td, .fl-table th {
