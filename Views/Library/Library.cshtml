@@ -6,8 +6,10 @@
 }
 
 <h2>title</h2>
-
-<section class="library-container">
+<section>
+    <input type="text" id="search" name="searchByAuthor" placeholder="Search By Author" oninput="SearchByFunction()"/>
+</section>
+<section id="all-books" class="library-container">
     @foreach (var book in @Model.Library)
     {
         <li class="book-container">
