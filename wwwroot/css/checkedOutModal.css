@@ -1,0 +1,9 @@
+﻿.checkedOutModal {
+    text-align: center;
+}
+
+.checkedOutModal .Image {
+    object-fit: contain;
+    width: 60%;
+    margin: auto;
+}

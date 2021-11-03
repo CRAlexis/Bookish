@@ -1,0 +1,15 @@
+﻿@model Bookish.Models.View.InventoryViewModel
+ <!-- The Modal -->
+    <div id="CheckedOutModal" class="modal">
+        <div class="modal-content checkedOutModal">
+            <span onclick="HideCheckedOutModal()" class="close">&times;</span>
+            <div>
+                <div><img class="Image" id="CheckOutModalImage" alt="" src=""/></div>
+                <p id="CheckedOutModalTitle"></p>
+                <p id="CheckedOutModalAuthor"></p>
+                <p id="CheckedOutModalGenre"></p>
+                <p id="CheckedOutModalYear"></p>
+                <p id="CheckedOutModal"></p>
+            </div>
+        </div>
+    </div>

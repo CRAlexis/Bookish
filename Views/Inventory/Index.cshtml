@@ -1,0 +1,40 @@
+﻿@model Bookish.Models.View.InventoryViewModel;
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<div class="inventoryContainer">
+    <div class="card searchBarContainer">
+        <input type="text" id="searchBookInput" name="searchBookInput" placeholder="Search for a book" value="@Model.QueryString" oninput="sortTableBySearch()">
+    </div>
+
+    <div class="spacer"></div>
+    <div class="card tableContainer">
+        <div class="table-wrapper">
+            <table class="fl-table" id="inventoryTable">
+                <thead>
+                <tr>
+                    <th onclick="sortTableByTitle()">Title</th>
+                    <th onclick="sortTableByAuthor()">Author</th>
+                    <th onclick="sortTableByGenre()">Genre</th>
+                    <th onclick="sortTableByYear()">Year</th>
+                    <th >Currently out</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var inventory in Model.Inventory)
+                {
+                    <tr onclick="ShowCheckedOutModal(@inventory.ToJSON())">
+                        <td>@inventory.title</td>
+                        <td>@inventory.author</td>
+                        <td>@inventory.genre</td>
+                        <td>@inventory.year_published</td>
+                        <td>@(inventory.currently_out ? "X" : "")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+   <partial name="CheckOutModal" model="@Model" />
+</div>
