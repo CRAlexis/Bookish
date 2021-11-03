@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Channels;
 using Bookish.Models.Database;
 using Bookish.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Bookish.Controllers
 {
@@ -20,11 +22,13 @@ namespace Bookish.Controllers
         // GET
         public string Index()
         {
-            var books = _booksService.GetAll();
+            var books = _booksService.GetLibraryData();
 
             foreach (var book in books)
             {
                 Console.WriteLine(book.title);
+                Console.WriteLine(book.author);
+                Console.WriteLine(book.genre);
             }
             return "View";
         }
