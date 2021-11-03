@@ -190,7 +190,7 @@ function sortTableBySearch() {
     var table, rows, switching, i, x, y;
     table = document.getElementById("inventoryTable");
     rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
+    for (i = 0; i < (rows.length - 1); i++) {
         const title = rows[i].getElementsByTagName("TD")[0];
         title.innerHTML.toLowerCase().includes(searchTerm.toLowerCase())
             ? rows[i].style.visibility = 'visible'
