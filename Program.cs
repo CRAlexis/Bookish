@@ -19,7 +19,7 @@ namespace Bookish
                 host.Run();
         }
 
-        public static void GenerateDummyData()
+        private static void GenerateDummyData()
         {
             var authors = new Authors().GetAll();
             if (!authors.Any())
