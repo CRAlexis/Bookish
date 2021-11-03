@@ -7,11 +7,11 @@ using Npgsql;
 
 namespace Bookish.Models.Database
 {
-    public class Authors
+    public class Author
     {
         private readonly NpgsqlConnection _Connection;
 
-        public Authors()
+        public Author()
         {
             _Connection = Database.Connect();
         }
@@ -19,16 +19,16 @@ namespace Bookish.Models.Database
         public int id { get; set; }
         public string author { get; set; }
     
-        public IEnumerable<Authors> GetAll()
+        public IEnumerable<Author> GetAll()
         {
-            var authors = _Connection.Query<Authors>($"SELECT * FROM authors");
+            var authors = _Connection.Query<Author>($"SELECT * FROM authors");
             _Connection.Close();
             return authors;
         }
 
-        public Authors GetOne(int authorId)
+        public Author GetOne(int authorId)
         {
-            var author = _Connection.QuerySingle<Authors>($"SELECT * FROM authors WHERE id = {authorId}");
+            var author = _Connection.QuerySingle<Author>($"SELECT * FROM authors WHERE id = {authorId}");
             _Connection.Close();
             return author;
         }
