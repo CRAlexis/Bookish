@@ -21,14 +21,14 @@ namespace Bookish
 
         private static void GenerateDummyData()
         {
-            var authors = new Authors().GetAll();
+            var authors = new Author().GetAll();
             if (!authors.Any())
             {
-                new Authors().GenerateDummyData();
-                new Genres().GenerateDummyData();
-                new Members().GenerateDummyData();
-                new Books().GenerateDummyData();
-                new Copies().GenerateDummyData();
+                new Author().GenerateDummyData();
+                new Genre().GenerateDummyData();
+                new Member().GenerateDummyData();
+                new Book().GenerateDummyData();
+                new Copy().GenerateDummyData();
                 new Borrowed().GenerateDummyData();
             }
         }
