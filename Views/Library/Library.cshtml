@@ -1,0 +1,37 @@
+@model Bookish.Models.View.LibraryViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+<section>
+    <input type="text" id="search" name="searchByAuthor" placeholder="Search By Author" oninput="SearchByFunction()"/>
+</section>
+<section id="all-books" class="library-container">
+    @foreach (var book in @Model.Library)
+    {
+        <li class="book-container">
+            <img class="book-image" src=@book.image alt="book image"/>
+            <p class="book-meta">@book.title</p>
+            <p class="book-meta">by @book.author</p>
+            <p class="book-meta">@book.genre</p>
+            <p class="book-meta">Published @book.year_published</p>
+        </li>
+    }
+</section>
+
+}
+<script>
+var children = document.getElementsByClassName("library-container").children
+
+for (child in children){
+        var title = "title";
+        if (title.includes(search)){
+            show()
+            }else{
+            hide()
+            }
+    }
+</script>

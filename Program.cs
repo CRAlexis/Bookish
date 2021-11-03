@@ -27,7 +27,7 @@ namespace Bookish
                 new Author().GenerateDummyData();
                 new Genre().GenerateDummyData();
                 new Member().GenerateDummyData();
-                new Book().GenerateDummyData();
+                // new Book().GenerateDummyData();
                 new Copy().GenerateDummyData();
                 new Borrowed().GenerateDummyData();
             }
