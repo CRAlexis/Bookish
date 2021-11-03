@@ -1,31 +1,24 @@
 ﻿@model Bookish.Controllers.HomeController
 
 @{
-    Layout = null;
+    ViewData["Titles"] = "Home Page";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>Library of Alexandria II</title>
-</head>
-<body class="container-fluid">
-<div class="row">
-    <div class="col">
-        Browse Books
-    </div>
-    <div class="col">
-        Inventory
-    </div>
+<div class="home-container">
+    <a href="" class="home-tile">
+        <img alt="" src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80"/>
+        <h3>Browse Books</h3>
+    </a>
+    <a href="" class="home-tile">
+        <img alt="" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2790&q=80"/>
+        <h3>Inventory</h3>
+    </a>
+    <a href="" class="home-tile">
+        <img alt="" src="https://images.unsplash.com/photo-1459623837994-06d03aa27b9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2832&q=80"/>
+        <h3>Members</h3>
+    </a>
+    <a href="" class="home-tile">
+        <img alt="" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80"/>
+        <h3>Reports</h3>
+    </a>
 </div>
-<div class="row">
-    <div class="col">
-        Members
-    </div>
-    <div class="col">
-        Reports
-    </div>
-</div>
-</body>
-</html>

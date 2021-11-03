@@ -1,0 +1,49 @@
+.home-tile {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.home-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.7) brightness(0.5);
+    transition: transform 0.5s, filter 0.5s;
+}
+
+.home-tile img:hover {
+    transform: scale(1.1);
+    filter: sepia(0.7) brightness(0.7);
+
+}
+
+.home-tile img:hover + h3 {
+    transform: scale(1.7);
+}
+
+.home-tile h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 5px white;
+    transition: transform 0.5s;
+    pointer-events: none;
+}
+
+.home-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50%;
+}
