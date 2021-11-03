@@ -6,12 +6,12 @@ using Npgsql;
 
 namespace Bookish.Models.Database
 {
-    public class Books
+    public class Book
     {
 
         private readonly NpgsqlConnection _Connection;
 
-        public Books()
+        public Book()
         {
             _Connection = Database.Connect();
         }
@@ -22,16 +22,16 @@ namespace Bookish.Models.Database
         public int year_published { get; set; }
         public string image { get; set; }
 
-        public IEnumerable<Books> GetAll()
+        public IEnumerable<Book> GetAll()
         {
-            var books = _Connection.Query<Books>($"SELECT * FROM books");
+            var books = _Connection.Query<Book>($"SELECT * FROM books");
             _Connection.Close();
             return books;
         }
 
-        public Books GetOne(int bookId)
+        public Book GetOne(int bookId)
         {
-            var book = _Connection.QuerySingle<Books>($"SELECT * FROM books WHERE id = {bookId}");
+            var book = _Connection.QuerySingle<Book>($"SELECT * FROM books WHERE id = {bookId}");
             _Connection.Close();
             return book;
         }
