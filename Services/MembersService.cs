@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using Bookish.Models.Database;
+﻿using System.Collections.Generic;
 using Bookish.Models.View;
 using Dapper;
 using Npgsql;
 
 namespace Bookish.Services
 {
-    public interface IBooksService
+    public interface IMembersService
     {
-        IEnumerable<Book> GetAll();
-        IEnumerable<BookViewModel> GetLibraryData();
+        IEnumerable<MemberViewModel> GetAll();
+        MemberViewModel GetById(int id);
 
     }
 
-    public class BooksService : IBooksService
+    public class MembersService : IMembersService
     {
         private const string ConnectionString =
             "Server=localhost;Port=5432;Database=bookish;Username=postgres;Password=Mittens.data.biz";
 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<MemberViewModel> GetAll()
         {
             using var connection = new NpgsqlConnection(ConnectionString);
-            return connection.Query<Book>($"SELECT * FROM books");
+            return connection.Query<MemberViewModel>("SELECT * FROM members");
         }
-
-        public IEnumerable<BookViewModel> GetLibraryData()
+        
+        public MemberViewModel GetById(int id)
         {
             using var connection = new NpgsqlConnection(ConnectionString);
-            return connection.Query<BookViewModel>(
-                "SELECT genres.genre, books.title, books.year_published, authors.author, books.image FROM genres " +
-                "INNER JOIN books on genres.id = books.genre_id " +
-                "INNER JOIN authors on authors.id = books.author_id;");
+            var parameters = new {Id = id};
+            return connection.QuerySingle<MemberViewModel>("SELECT * FROM members WHERE id = @Id", parameters);
         }
+        
     }
 }
