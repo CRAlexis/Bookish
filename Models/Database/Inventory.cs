@@ -16,6 +16,7 @@ namespace Bookish.Models.Database
         }
 
         public int copy_id { get; set; }
+        public int book_id { get; set; }
         public string title { get; set; }
         public int year_published { get; set; }
         public bool currently_out { get; set; }
@@ -23,6 +24,7 @@ namespace Bookish.Models.Database
         public string author { get; set; }
         public string genre { get; set; }
         public string image { get; set; }
+        
 
         public IEnumerable<Inventory> GetAll()
         {
@@ -34,6 +36,7 @@ namespace Bookish.Models.Database
                 $"books.year_published, " +
                 $"authors.author, " +
                 $"copies.id AS copy_id, " +
+                $"books.id AS book_id, " +
                 $"(recently_borrowed.checked_out IS NOT NULL AND recently_borrowed.returned IS NULL) AS currently_out, " +
                 $"recently_borrowed.members_id " +
                 $"FROM genres " +
@@ -53,6 +56,7 @@ namespace Bookish.Models.Database
             return Newtonsoft.Json.JsonConvert.SerializeObject(new
             {
                 copy_id,
+                book_id,
                 title,
                 year_published,
                 currently_out,

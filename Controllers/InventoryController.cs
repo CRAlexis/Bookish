@@ -8,7 +8,7 @@ namespace Bookish.Controllers
     public class InventoryController : Controller
     {
         // GET
-        public IActionResult Index(string queryString = "")
+        public IActionResult Index(string bookTitle = "", int bookId = 0)
         {
             var inventory = new Inventory().GetAll();
             var members = new Member().GetAll();
@@ -16,8 +16,9 @@ namespace Bookish.Controllers
             return View(new InventoryViewModel
             {
                 Inventory = inventory.ToList(),
-                QueryString = queryString,
-                Members = members
+                BookTitle = bookTitle,
+                Members = members,
+                BookId = bookId
             });
         }
     }

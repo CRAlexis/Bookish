@@ -5,7 +5,9 @@
 
 <div class="inventoryContainer">
     <div class="card searchBarContainer">
-        <input type="text" id="searchBookInput" name="searchBookInput" placeholder="Search for a book" value="@Model.QueryString" oninput="sortTableBySearch()">
+        <span style="position:relative;" onclick="searchByTitle()">
+            <input type="text" id="searchBookInput" name="searchBookInput" placeholder="Search for a book" value="@Model.BookTitle" oninput="sortTableBySearch()">
+        </span>
     </div>
 
     <div class="spacer"></div>
@@ -19,6 +21,7 @@
                     <th onclick="sortTableByGenre()">Genre</th>
                     <th onclick="sortTableByYear()">Year</th>
                     <th >Currently out</th>
+                    <th style="display: none">Book Id</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,11 +33,26 @@
                         <td>@inventory.genre</td>
                         <td>@inventory.year_published</td>
                         <td>@(inventory.currently_out ? "X" : "")</td>
+                        <td style="display: none">@inventory.book_id</td>
                     </tr>
                 }
                 </tbody>
             </table>
         </div>
     </div>
-   <partial name="CheckOutModal" model="@Model" />
+    <partial name="CheckOutModal" model="@Model"/>
 </div>
+<script>
+window.onload = () => {
+setTimeout(() => {
+      sortByBookId(@Model.BookId)
+      if (@Model.BookId === 0) {
+          sortTableBySearch()
+      } else {
+          const input = document.getElementById("searchBookInput");
+          input.placeholder = "Currently searching by Id of " + bookId + "... Click here to search by title";
+          input.disabled = true;
+      }
+    }, 50)
+}
+</script>

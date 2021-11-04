@@ -1,4 +1,5 @@
 ﻿var sortByTitle = false;
+
 function sortTableByTitle() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("inventoryTable");
@@ -190,11 +191,41 @@ function sortTableBySearch() {
     var table, rows, switching, i, x, y;
     table = document.getElementById("inventoryTable");
     rows = table.rows;
-    for (i = 0; i < (rows.length - 1); i++) {
+    for (i = 1; i < (rows.length); i++) {
         const title = rows[i].getElementsByTagName("TD")[0];
         title.innerHTML.toLowerCase().includes(searchTerm.toLowerCase())
             ? rows[i].style.visibility = 'visible'
             : rows[i].style.visibility = 'collapse'
     }
 }
-sortTableBySearch()
+
+var bookId = 0;
+
+function sortByBookId(int) {
+    bookId = int
+    var table, rows, switching, i, x, y;
+    table = document.getElementById("inventoryTable");
+    rows = table.rows;
+    for (i = 1; i < (rows.length); i++) {
+        const title = rows[i].getElementsByTagName("td")[5];
+        title.innerHTML === bookId.toString()
+            ? rows[i].style.visibility = 'visible'
+            : rows[i].style.visibility = 'collapse'
+    }
+}
+
+function searchByTitle(){
+    const input = document.getElementById("searchBookInput");
+    input.placeholder = "Search for a book";
+    input.disabled = false;
+    input.focus()
+}
+
+/*window.onload = () => {
+    setTimeout(() => {
+        console.log("Runninf the function");
+
+        
+    }, 500)
+
+}*/

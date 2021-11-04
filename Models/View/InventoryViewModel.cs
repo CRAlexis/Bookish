@@ -7,9 +7,9 @@ namespace Bookish.Models.View
     {
         public List<Inventory> Inventory { get; set; }
         public List<Member> Members { get; set; }
-        public string QueryString { get; set; }
+        public string BookTitle { get; set; }
 
-        public int selectedId { get; set; }
+        public int BookId { get; set; }
 
         
     }
