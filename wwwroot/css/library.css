@@ -24,7 +24,12 @@
 
 .book-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) inset;
+    text-decoration: none;
 }
+
+.book-container:link { text-decoration: none; }
+.book-container:visited { text-decoration: none; }
+.book-container:active { text-decoration: none; }
 
 .book-image{
     border-radius: 2%;
@@ -33,3 +38,10 @@
     box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.2);
     object-fit: cover;
 }
+
+.book-meta{
+    text-decoration: none;
+}
+.book-meta:link { text-decoration: none; }
+.book-meta:visited { text-decoration: none; }
+.book-meta:active { text-decoration: none; }
