@@ -31,6 +31,7 @@ namespace Bookish
             // services.AddControllers();
             services.AddControllersWithViews();
             services.AddTransient<IBooksService, BooksService>();
+            services.AddTransient<IMembersService, MembersService>();
             // services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Bookish", Version = "v1"}); });
         }
 

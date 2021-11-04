@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Bookish.Models.View;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Bookish.Models;
-using Bookish.Models.View;
 
 namespace Bookish.Controllers
 {
-    [Route("")]
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,13 +15,7 @@ namespace Bookish.Controllers
         }
 
         [HttpGet("")]
-
         public IActionResult Home()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
