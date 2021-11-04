@@ -1,5 +1,5 @@
 function SearchByFunction(){
-    const search = document.getElementById("search").value.toLowerCase();
+    const search = document.getElementById("searchByTitle").value.toLowerCase();
     console.log(search);
     
     const children = document.getElementById("all-books").children
