@@ -41,5 +41,39 @@ namespace Bookish.Controllers
             };
             return View(viewModel);
         }
+        
+        [HttpGet("create")]
+        public IActionResult CreateLibraryBookPage()
+        {
+            return View();
+        }
+        
+        
+        [HttpPost("create")]
+
+        public IActionResult CreateBook(Book newBook)
+
+        {
+            _booksService.CreateBook(newBook);
+
+            return RedirectToAction("Library");
+        }
+        
+        [HttpGet("update")]
+        public IActionResult UpdateLibraryBookPage()
+        {
+            return View();
+        }
+        
+        [HttpPost("update")]
+
+        public IActionResult EditBook(Book newBook)
+
+        {
+            _booksService.UpdateBook(newBook);
+
+            return RedirectToAction("Library");
+        }
+        
     }
 }

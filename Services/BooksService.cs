@@ -12,6 +12,8 @@ namespace Bookish.Services
         IEnumerable<Book> GetAll();
         IEnumerable<BookViewModel> GetById(int id);
         IEnumerable<BookViewModel> GetLibraryData();
+        IEnumerable<Book> CreateBook(Book bookModel);
+        IEnumerable<Book> UpdateBook(Book bookModel);
 
     }
 
@@ -42,6 +44,46 @@ namespace Bookish.Services
                 "SELECT books.id as book_id, authors.id as author_id, genres.genre, books.title, books.year_published, authors.author, books.image FROM genres " +
                 "INNER JOIN books on genres.id = books.genre_id " +
                 "INNER JOIN authors on authors.id = books.author_id;");
+        }
+
+        public IEnumerable<Book> CreateBook(Book bookModel)
+        {
+            using var connection = new NpgsqlConnection(ConnectionString);
+
+            var paramaters = new 
+            {
+                title = bookModel.title,
+                authorId = bookModel.author_id,
+                genreId = bookModel.genre_id,
+                yearPublished = bookModel.year_published,
+                image = bookModel.image
+            };
+
+            var sql = " INSERT INTO books (title, author_id, genre_id, year_published, image) VALUES (@title, @authorId, @genreId, @yearPublished, @image);";
+            return connection.Query<Book>(sql, paramaters);
+
+
+        }
+        
+        public IEnumerable<Book> UpdateBook(Book bookModel)
+        {
+            using var connection = new NpgsqlConnection(ConnectionString);
+
+            var paramaters = new 
+            {
+                bookId = bookModel.id,
+                title = bookModel.title,
+                authorId = bookModel.author_id,
+                genreId = bookModel.genre_id,
+                yearPublished = bookModel.year_published,
+                image = bookModel.image
+            };
+
+            var sql =
+                "UPDATE books SET title = @title, author_id = @authorId, genre_id = @genreId, year_published = @yearPublished, image = @image WHERE id = @bookId;";
+            return connection.Query<Book>(sql, paramaters);
+
+
         }
     }
 }
