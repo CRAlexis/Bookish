@@ -18,17 +18,17 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Home"></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Home">The Library of Alexandria II</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Library" asp-action="Index">Library</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Library" asp-action="Library">Library</a>
                         </li>
                         <li class="nav-item">
-                            @* <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="UsersPage">Users</a> *@
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="Index">Inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="MembersList">Members</a>
                         </li>
                     </ul>
                 </div>
