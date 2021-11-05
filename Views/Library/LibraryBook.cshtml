@@ -13,7 +13,13 @@
         <p class="book-meta">@book.genre</p>
         <p class="book-meta">Published @book.year_published</p>
     </a>
-    
-    <a class="myButton" asp-controller="Inventory" asp-action="Index" asp-route-bookTitle="@book.title" asp-route-bookId="@book.book_id" >Go to Inventory</a>
-    <a class="myButton" asp-controller="Library" asp-action="UpdateLibraryBookPage" >Edit a book</a>
+
+    <a class="myButton" asp-controller="Inventory" asp-action="Index" asp-route-bookTitle="@book.title" asp-route-bookId="@book.book_id">Go to Inventory</a>
+    <a class="myButton" asp-controller="Library" asp-action="UpdateLibraryBookPage" asp-route-id="@book.book_id"
+       asp-route-title="@book.title",
+       asp-route-authorId="@book.author_id",
+       asp-route-genreId="@book.genre_id",
+       asp-route-yearPublished="@book.year_published",
+       asp-route-image="@book.image">Edit a book
+    </a>
 }
