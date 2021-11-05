@@ -1,0 +1,14 @@
+﻿@model Bookish.Models.View.MemberViewModel
+@{
+    ViewData["Title"] = Model.name;
+}
+
+<div class="inventoryContainer">
+    <div class="card tableContainer">
+     
+            <p class="member-details">Member Name: @Model.name</p>
+            <p class="member-details">Member Email: @Model.email</p>
+      
+    </div>
+
+</div>

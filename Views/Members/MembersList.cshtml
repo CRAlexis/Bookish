@@ -1,0 +1,33 @@
+﻿@model Bookish.Models.View.MembersViewModel
+@{
+    ViewData["Title"] = "Members";
+}
+
+<div class="inventoryContainer">
+
+    <div class="spacer"></div>
+    <div class="card tableContainer">
+        <div class="table-wrapper">
+            <table class="fl-table" id="inventoryTable">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Current Checked Out</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var member in Model.Members)
+                {
+                    <tr>
+                        <td>@member.name</td>
+                        <td>@member.email</td>
+                        <td>0</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
