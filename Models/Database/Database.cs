@@ -9,7 +9,7 @@ namespace Bookish.Models.Database
         public static  NpgsqlConnection Connect()
         {
             return new NpgsqlConnection(
-                "User ID=postgres;Password=Newxbox360;Host=localhost;Port=5432;Database=Bookish;");
+                "User ID=postgres;Password=bookish;Host=localhost;Port=5432;Database=bookish;");
         }
 
     }

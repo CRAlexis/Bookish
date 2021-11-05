@@ -26,9 +26,54 @@ namespace Bookish.Controllers
             var viewModel = new LibraryViewModel
             {
                 Library = books
-                    // .ToList()
             };
             return View(viewModel);
         }
+        
+        
+        [HttpGet("{id}")]
+        public IActionResult LibraryBook(int id)
+        {
+            var book = _booksService.GetById(id);
+            var viewModel = new LibraryViewModel
+            {
+                Library = book
+            };
+            return View(viewModel);
+        }
+        
+        [HttpGet("create")]
+        public IActionResult CreateLibraryBookPage()
+        {
+            return View();
+        }
+        
+        
+        [HttpPost("create")]
+
+        public IActionResult CreateBook(Book newBook)
+
+        {
+            _booksService.CreateBook(newBook);
+
+            return RedirectToAction("Library");
+        }
+        
+        [HttpGet("update")]
+        public IActionResult UpdateLibraryBookPage()
+        {
+            return View();
+        }
+        
+        [HttpPost("update")]
+
+        public IActionResult EditBook(Book newBook)
+
+        {
+            _booksService.UpdateBook(newBook);
+
+            return RedirectToAction("Library");
+        }
+        
     }
 }

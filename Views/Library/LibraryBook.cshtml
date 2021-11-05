@@ -1,0 +1,19 @@
+@model Bookish.Models.View.LibraryViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+@foreach (var book in @Model.Library)
+{
+    <a class="book-container" asp-controller="Library" asp-action="LibraryBook" asp-route-id="@book.book_id">
+        <img class="book-image" src=@book.image alt="book image"/>
+        <p class="book-meta">@book.title</p>
+        <p class="book-meta">by @book.author</p>
+        <p class="book-meta">@book.genre</p>
+        <p class="book-meta">Published @book.year_published</p>
+    </a>
+    
+    <a class="myButton" asp-controller="Inventory" asp-action="Index" asp-route-bookTitle="@book.title" asp-route-bookId="@book.book_id" >Go to Inventory</a>
+    <a class="myButton" asp-controller="Library" asp-action="UpdateLibraryBookPage" >Edit a book</a>
+}

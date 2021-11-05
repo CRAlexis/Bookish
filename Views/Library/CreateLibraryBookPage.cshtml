@@ -1,0 +1,52 @@
+@model Bookish.Models.View.BookViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<p>Add a new book</p>
+
+
+<div>
+    @using (Html.BeginForm("CreateBook", "Library", FormMethod.Post))
+    {
+        <div class="messageLabel">
+            @Html.LabelFor(model => model.title)
+        </div>
+
+        <div class="messageArea">
+            @Html.TextBoxFor(model => model.title)
+        </div>
+        <div class="messageLabel">
+            @Html.LabelFor(model => model.author_id)
+        </div>
+
+        <div class="messageArea">
+            @Html.TextBoxFor(model => model.author_id)
+        </div>
+        <div class="messageLabel">
+            @Html.LabelFor(model => model.genre_id)
+        </div>
+
+        <div class="messageArea">
+            @Html.TextBoxFor(model => model.genre_id)
+        </div>
+        <div class="messageLabel">
+            @Html.LabelFor(model => model.year_published)
+        </div>
+
+        <div class="messageArea">
+            @Html.TextBoxFor(model => model.year_published)
+        </div>
+        <div class="messageLabel">
+            @Html.LabelFor(model => model.image)
+        </div>
+        <div class="messageArea">
+            @Html.TextBoxFor(model => model.image)
+        </div>
+        
+        
+        <input class="submitBtn" type="submit" value="Submit">
+    }
+</div>
