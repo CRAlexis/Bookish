@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Bookish.Models.View;
 using Dapper;
 using Npgsql;
@@ -19,7 +19,10 @@ namespace Bookish.Services
         public IEnumerable<MemberViewModel> GetAll()
         {
             using var connection = new NpgsqlConnection(ConnectionString);
-            return connection.Query<MemberViewModel>("SELECT * FROM members");
+            
+            const string sql =
+                "SELECT members.id, members.name, members.email, COUNT(1) FROM members INNER JOIN borrowed on borrowed.members_id = members.id GROUP BY members.id;";
+            return connection.Query<MemberViewModel>(sql);
         }
         
         public MemberViewModel GetById(int id)
