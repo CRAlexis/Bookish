@@ -20,12 +20,11 @@ namespace Bookish.Models.Database
         public string title { get; set; }
         public int year_published { get; set; }
         public bool currently_out { get; set; }
-        public bool members_id { get; set; }
+        public int members_id { get; set; }
         public string author { get; set; }
         public string genre { get; set; }
         public string image { get; set; }
         
-
         public IEnumerable<Inventory> GetAll()
         {
             var inventory = _Connection.Query<Inventory>(
@@ -52,7 +51,6 @@ namespace Bookish.Models.Database
 
         public string ToJSON()
         {
-            //json.net
             return Newtonsoft.Json.JsonConvert.SerializeObject(new
             {
                 copy_id,

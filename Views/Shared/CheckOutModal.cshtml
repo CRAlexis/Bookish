@@ -1,15 +1,53 @@
-﻿@model Bookish.Models.View.InventoryViewModel
- <!-- The Modal -->
-    <div id="CheckedOutModal" class="modal">
-        <div class="modal-content checkedOutModal">
-            <span onclick="HideCheckedOutModal()" class="close">&times;</span>
-            <div>
-                <div><img class="Image" id="CheckOutModalImage" alt="" src=""/></div>
+﻿<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@model Bookish.Models.View.InventoryViewModel
+<!-- The Modal -->
+<div id="CheckedOutModal" class="modal">
+    <div class="modal-content checkedOutModal">
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button" onclick="OpenModalTab('ModalBookDetails')">Details</button>
+            <button class="w3-bar-item w3-button" onclick="OpenModalTab('ModalCheckOut')">Check Out/In</button>
+            <button class="w3-bar-item w3-button" onclick="OpenModalTab('ModalBookHistory')">Book History</button>
+            <button class="w3-bar-item w3-button right" onclick="HideCheckedOutModal()">Close Modal</button>
+        </div>
+        <div>
+            <div id="ModalBookDetails" class="ModalTabs showTab">
+                <img class="Image" id="CheckOutModalImage" alt="" src=""/>
                 <p id="CheckedOutModalTitle"></p>
                 <p id="CheckedOutModalAuthor"></p>
                 <p id="CheckedOutModalGenre"></p>
                 <p id="CheckedOutModalYear"></p>
-                <p id="CheckedOutModal"></p>
+            </div>
+            <div id="ModalCheckOut" class="ModalTabs hideTab">
+                <p id="ModalCheckOutText"></p>
+                <form action="https://localhost:5001/checkout" method="post">
+                    <label for="ModalCheckOutUsers" id="ModalCheckOutUsersText">Choose a member</label>
+                    <select name="memberId" id="ModalCheckOutUsers">
+                        <option selected disabled></option>
+                    </select>
+                    <input id="ModalCheckOutCopyId" name="copyId" value="" hidden/>
+                    <input id="ModalCheckOutCheckingOut" name="checkingOut" value="true" hidden/>
+                    <br><br>
+                    <input id="ModalCheckOutButton" type="submit" value="Check out">
+                </form>
+                @* If book already checked out then have check in button instead *@
+            </div>
+            <div id="ModalBookHistory" class="ModalTabs hideTab">
+                <div class="table-wrapper">
+                    <table class="fl-table" style="margin-top: 15px">
+                        <thead>
+                        <tr>
+                            <th >Member</th>
+                            <th >Email</th>
+                            <th >Checked out</th>
+                            <th >Returned</th>
+                            <th >Due Date</th>
+                        </tr>
+                        </thead>
+                        <tbody id="ModalBookHistoryTable">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+</div>
