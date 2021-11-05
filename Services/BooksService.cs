@@ -12,6 +12,8 @@ namespace Bookish.Services
         IEnumerable<Book> GetAll();
         IEnumerable<BookViewModel> GetById(int id);
         IEnumerable<BookViewModel> GetLibraryData();
+        
+        IEnumerable<AuthorViewModel> GetAuthors();
         IEnumerable<Book> CreateBook(Book bookModel);
         IEnumerable<Book> UpdateBook(Book bookModel);
 
@@ -44,6 +46,13 @@ namespace Bookish.Services
                 "SELECT books.id as book_id, authors.id as author_id, genres.genre, genres.id as genre_id, books.title, books.year_published, authors.author, books.image FROM genres " +
                 "INNER JOIN books on genres.id = books.genre_id " +
                 "INNER JOIN authors on authors.id = books.author_id;");
+        }
+        
+        public IEnumerable<AuthorViewModel> GetAuthors()
+        {
+            using var connection = new NpgsqlConnection(ConnectionString);
+            return connection.Query<AuthorViewModel>(
+                "SELECT * FROM authors;");
         }
 
         public IEnumerable<Book> CreateBook(Book bookModel)

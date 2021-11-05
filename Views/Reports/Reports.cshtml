@@ -1,4 +1,7 @@
 ﻿@model Bookish.Controllers.ReportsController
+@{
+    Layout = "_Layout";
+}
 
 <body>
 <div style="display: flex; align-items:center; justify-content: center">
@@ -6,7 +9,7 @@
 </div>
        <div class="inventoryContainer">
            <div class="card tableContainer">
-               <a asp-controller="" asp-action="">Report1</a>
+               <a asp-controller="Reports" asp-action="Authors">List of Authors</a>
            </div>
            <div class="card tableContainer">
            <a asp-controller="" asp-action="">Report2</a></div>

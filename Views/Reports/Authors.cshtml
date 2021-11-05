@@ -1,0 +1,32 @@
+@model Bookish.Models.View.AuthorsViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="inventoryContainer">
+
+    <div class="spacer"></div>
+    <div class="card tableContainer">
+        <div class="table-wrapper">
+            <table class="fl-table" id="inventoryTable">
+                <thead>
+                <tr>
+                    <th>Author ID</th>
+                    <th>Author Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var author in Model.Authors)
+                {
+                    <tr>
+                        <td>@author.id</td>
+                        <td>@author.author</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
