@@ -9,7 +9,6 @@ namespace Bookish.Services
     {
         IEnumerable<MemberViewModel> GetAll();
         MemberViewModel GetById(int id);
-
     }
 
     public class MembersService : IMembersService
