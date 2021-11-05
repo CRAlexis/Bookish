@@ -15,11 +15,12 @@
     </a>
 
     <a class="myButton" asp-controller="Inventory" asp-action="Index" asp-route-bookTitle="@book.title" asp-route-bookId="@book.book_id">Go to Inventory</a>
-    <a class="myButton" asp-controller="Library" asp-action="UpdateLibraryBookPage" asp-route-id="@book.book_id"
-       asp-route-title="@book.title",
-       asp-route-authorId="@book.author_id",
-       asp-route-genreId="@book.genre_id",
-       asp-route-yearPublished="@book.year_published",
+    <a class="myButton" asp-controller="Library" asp-action="UpdateLibraryBookPage" 
+       asp-route-id="@book.book_id"
+       asp-route-title="@book.title"
+       asp-route-author_id="@book.author_id"
+       asp-route-genre_id="@book.genre_id"
+       asp-route-year_published="@book.year_published"
        asp-route-image="@book.image">Edit a book
     </a>
 }

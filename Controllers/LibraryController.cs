@@ -60,17 +60,17 @@ namespace Bookish.Controllers
         }
         
         [HttpGet("update/{id}")]
-        public IActionResult UpdateLibraryBookPage(int id, string title, int authorId, int genreId, int yearPublished, string image)
+        public IActionResult UpdateLibraryBookPage(int id, string title, int author_id, int genre_id, int year_published, string image)
         {
             return View();
         }
         
-        [HttpPost("update/{id}")]
+        [HttpPost("update")]
 
-        public IActionResult EditBook(Book newBook, int id, string title, int authorId, int genreId, int yearPublished, string image)
+        public IActionResult EditBook(Book newBook)
 
         {
-            _booksService.UpdateBook(newBook, id, title, authorId, genreId, yearPublished, image);
+            _booksService.UpdateBook(newBook);
 
             return RedirectToAction("Library");
         }
