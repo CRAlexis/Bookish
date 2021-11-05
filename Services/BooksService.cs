@@ -13,7 +13,7 @@ namespace Bookish.Services
         IEnumerable<BookViewModel> GetById(int id);
         IEnumerable<BookViewModel> GetLibraryData();
         IEnumerable<Book> CreateBook(Book bookModel);
-        IEnumerable<Book> UpdateBook(Book bookModel, int id, string title, int authorId, int genreId, int yearPublished, string image);
+        IEnumerable<Book> UpdateBook(Book bookModel);
 
     }
 
@@ -34,14 +34,14 @@ namespace Bookish.Services
             var parameters = new {BookId = id};
 
             var sql =
-                "SELECT genres.genre, books.title, books.year_published, authors.author, books.image, books.id AS book_id FROM genres INNER JOIN books on genres.id = books.genre_id INNER JOIN authors on authors.id = books.author_id WHERE books.id = @BookId;";
+                "SELECT genres.genre, genres.id as genre_id, authors.id as author_id, books.title, books.year_published, authors.author, books.image, books.id AS book_id FROM genres INNER JOIN books on genres.id = books.genre_id INNER JOIN authors on authors.id = books.author_id WHERE books.id = @BookId;";
             return connection.Query<BookViewModel>(sql, parameters);
         }
         public IEnumerable<BookViewModel> GetLibraryData()
         {
             using var connection = new NpgsqlConnection(ConnectionString);
             return connection.Query<BookViewModel>(
-                "SELECT books.id as book_id, authors.id as author_id, genres.genre, books.title, books.year_published, authors.author, books.image FROM genres " +
+                "SELECT books.id as book_id, authors.id as author_id, genres.genre, genres.id as genre_id, books.title, books.year_published, authors.author, books.image FROM genres " +
                 "INNER JOIN books on genres.id = books.genre_id " +
                 "INNER JOIN authors on authors.id = books.author_id;");
         }
@@ -65,18 +65,18 @@ namespace Bookish.Services
 
         }
         
-        public IEnumerable<Book> UpdateBook(Book bookModel, int id, string title, int authorId, int genreId, int yearBookPublished, string image)
+        public IEnumerable<Book> UpdateBook(Book bookModel)
         {
             using var connection = new NpgsqlConnection(ConnectionString);
 
             var paramaters = new 
             {
-                bookId = id,
-                title = title,
-                authorId = authorId,
-                genreId = genreId,
-                yearPublished = yearBookPublished,
-                image = image
+                bookId = @bookModel.id,
+                title = @bookModel.title,
+                authorId = @bookModel.author_id,
+                genreId = @bookModel.genre_id,
+                yearPublished = @bookModel.year_published,
+                image = @bookModel.image
             };
 
             var sql =

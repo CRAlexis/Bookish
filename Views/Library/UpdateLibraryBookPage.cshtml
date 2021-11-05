@@ -5,7 +5,7 @@
     Layout = "_Layout";
 }
 
-<p>Update book</p>
+<h2>Update book</h2>
 
 
 <div>
@@ -13,11 +13,7 @@
     {
         
         <div class="messageLabel">
-            @Html.LabelFor(model => model.id)
-        </div>
-
-        <div class="messageArea">
-            @Html.TextBoxFor(model => model.id)
+            @Html.HiddenFor(model => model.id)
         </div>
         
         <div class="messageLabel">
