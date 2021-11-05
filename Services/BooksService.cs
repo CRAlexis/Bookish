@@ -13,7 +13,7 @@ namespace Bookish.Services
         IEnumerable<BookViewModel> GetById(int id);
         IEnumerable<BookViewModel> GetLibraryData();
         IEnumerable<Book> CreateBook(Book bookModel);
-        IEnumerable<Book> UpdateBook(Book bookModel);
+        IEnumerable<Book> UpdateBook(Book bookModel, int id, string title, int authorId, int genreId, int yearPublished, string image);
 
     }
 
@@ -65,18 +65,18 @@ namespace Bookish.Services
 
         }
         
-        public IEnumerable<Book> UpdateBook(Book bookModel)
+        public IEnumerable<Book> UpdateBook(Book bookModel, int id, string title, int authorId, int genreId, int yearBookPublished, string image)
         {
             using var connection = new NpgsqlConnection(ConnectionString);
 
             var paramaters = new 
             {
-                bookId = bookModel.id,
-                title = bookModel.title,
-                authorId = bookModel.author_id,
-                genreId = bookModel.genre_id,
-                yearPublished = bookModel.year_published,
-                image = bookModel.image
+                bookId = id,
+                title = title,
+                authorId = authorId,
+                genreId = genreId,
+                yearPublished = yearBookPublished,
+                image = image
             };
 
             var sql =
