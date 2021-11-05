@@ -14,6 +14,7 @@ namespace Bookish.Services
         IEnumerable<BookViewModel> GetLibraryData();
         
         IEnumerable<AuthorViewModel> GetAuthors();
+        IEnumerable<GenreViewModel> GetGenres();
         IEnumerable<Book> CreateBook(Book bookModel);
         IEnumerable<Book> UpdateBook(Book bookModel);
 
@@ -54,6 +55,14 @@ namespace Bookish.Services
             return connection.Query<AuthorViewModel>(
                 "SELECT * FROM authors;");
         }
+        
+        public IEnumerable<GenreViewModel> GetGenres()
+        {
+            using var connection = new NpgsqlConnection(ConnectionString);
+            return connection.Query<GenreViewModel>(
+                "SELECT * FROM genres;");
+        }
+
 
         public IEnumerable<Book> CreateBook(Book bookModel)
         {

@@ -33,6 +33,18 @@ namespace Bookish.Controllers
             return View(viewModel);
 
         }
+        
+        [HttpGet("/reports/genres")]
+        public IActionResult Genres()
+        {
+            var genres = _booksService.GetGenres();
+            var viewModel = new GenresViewModel
+            {
+                Genres = genres
+            };
+            return View(viewModel);
+
+        }
     }
     
     }

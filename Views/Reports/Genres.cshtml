@@ -1,0 +1,32 @@
+@model Bookish.Models.View.GenresViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="inventoryContainer">
+
+    <div class="spacer"></div>
+    <div class="card tableContainer">
+        <div class="table-wrapper">
+            <table class="fl-table" id="inventoryTable">
+                <thead>
+                <tr>
+                    <th>Genre ID</th>
+                    <th>Genre Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var genre in Model.Genres)
+                {
+                    <tr>
+                        <td>@genre.id</td>
+                        <td>@genre.genre</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
