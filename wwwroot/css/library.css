@@ -105,3 +105,6 @@
     transform: translateY(0);
 }
 
+#searchByTitle{
+    margin-top: 10px;
+}
